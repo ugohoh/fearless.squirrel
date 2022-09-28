@@ -26,6 +26,7 @@ Player.prototype.dead = function () {
         $("#container").html("");
         jQuery('#'+this.name+' >.life').text("Tu es mort !");
         init();
+        //$('#nbLives').text(Number($('#counter').text())-1);
 }
 
 Player.prototype.accelerate = function (distance) {
@@ -51,13 +52,13 @@ Player.prototype.displayInfo = function () {
 }
 
 Player.prototype.turnRight = function (angle) {
-    this.direction += angle;
-    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), +angle);
+    this.direction -= angle;
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), -angle);
 };
 
 Player.prototype.turnLeft = function (angle) {
     this.direction += angle;
-    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), angle);
+    this.graphic.rotateOnAxis(new THREE.Vector3(0,0,1), +angle);
 };
 
 Player.prototype.move = function () {
@@ -83,3 +84,11 @@ Player.prototype.move = function () {
     light1.position.y = this.position.y;
    //light1.position.z = this.graphic.position.z + 500;
 };
+
+Player.prototype.correctMove = function(xx, yy) {
+    this.position.x = xx;
+    this.position.y = yy;
+
+    this.graphic.position.x = xx;
+    this.graphic.position.y = yy;
+}
