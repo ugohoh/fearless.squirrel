@@ -33,6 +33,10 @@ function init()
 
     light1 = new Light("sun", 0xffffff, "0,0,340");
     scene.add(light1);
+
+    ennemi = new Player("player2", 0xffff00, new THREE.Vector2(10, 0), 0);
+    scene.add(ennemi.graphic);
+    ennemi.moveBot();
 }
 
 function Ground(color, size_x, size_y, nb_tile)
